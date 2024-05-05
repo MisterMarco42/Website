@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meine Webseite</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        #content {
+            text-align: center;
+        }
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <h1>Hallo</h1>
+        <canvas id="sinusCanvas" width="400" height="200"></canvas>
+    </div>
+
+    <script>
+        // Sinusfunktion zeichnen
+        var canvas = document.getElementById("sinusCanvas");
+        var context = canvas.getContext("2d");
+        var width = canvas.width;
+        var height = canvas.height;
+
+        context.beginPath();
+        context.moveTo(0, height / 2);
+
+        for (var x = 0; x < width; x++) {
+            var angle = (x / width) * Math.PI * 2;
+            var y = Math.sin(angle) * height / 4 + height / 2;
+            context.lineTo(x, y);
+        }
+
+        context.strokeStyle = "#000";
+        context.stroke();
+    </script>
+</body>
+</html>
